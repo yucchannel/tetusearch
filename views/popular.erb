@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>人気路線ランキング</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #333; }
+    ol { padding-left: 20px; }
+    li { margin-bottom: 5px; }
+    a { display: inline-block; margin-top: 20px; text-decoration: none; color: #007BFF; }
+    a:hover { text-decoration: underline; }
+    span { color: #007BFF; }
+  </style>
+</head>
+<body>
+  <h1><span>Tetu</span>Search</h1>
+  <h3>人気路線ランキング（上位10）</h3>
+  <ol>
+    <% @ranking.each do |line, count| %>
+      <li><%= line %> （検索回数: <%= count %>）</li>
+    <% end %>
+  </ol>
+  <a href="/">戻る</a>
+</body>
+</html>

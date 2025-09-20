@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>検索結果</title>
+  <style>
+    .delay { color: red; font-weight: bold; }
+    .section { margin-left: 20px; margin-bottom: 10px; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #333; }
+    form { margin-top: 20px; }
+    input[type="text"] { width: 200px; padding: 5px; margin-bottom: 10px; }
+    input[type="submit"] { padding: 5px 10px; }
+    span { color: #007BFF; }
+  </style>
+</head>
+<body>
+<h1><span>Tetu</span>Search</h1>
+  <h3>検索結果</h3>
+  <% @routes.each_with_index do |route, idx| %>
+    <h2>ルート候補 <%= idx+1 %></h2>
+    <p>出発: <%= route[:times][0] %> → 到着: <%= route[:times][1] %></p>
+    <% route[:sections].each do |sec| %>
+      <div class="section">
+        <% if sec[:type] == "鉄道" %>
+          <strong>鉄道:</strong> <%= sec[:line] %><br>
+          乗車駅: <%= sec[:boarding] %> <%= "のりば: #{sec[:platform]}" if sec[:platform] != "" %><br>
+          降車駅: <%= sec[:dropoff] %><br>
+          <% if sec[:delay] && !sec[:delay].empty? %>
+            <span class="delay">遅延: <%= sec[:delay] %></span><br>
+          <% end %>
+        <% elsif sec[:type] == "バス" %>
+          <strong>バス:</strong> <%= sec[:line] %><br>
+          乗車停留所: <%= sec[:boarding] %><br>
+          降車停留所: <%= sec[:dropoff] %><br>
+        <% elsif sec[:type] == "徒歩" %>
+          <strong>徒歩:</strong> <%= sec[:info] %><br>
+        <% end %>
+      </div>
+    <% end %>
+    <hr>
+  <% end %>
+  <a href="/">戻る</a>
+  <br>
+    <a href="/popular">人気路線ランキングを見る</a>
+
+</body>
+</html>
+

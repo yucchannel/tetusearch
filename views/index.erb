@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TetuSearch - 鉄道ルート検索</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #333; }
+    form { margin-top: 20px; }
+    input[type="text"] { width: 200px; padding: 5px; margin-bottom: 10px; }
+    input[type="submit"] { padding: 5px 10px; }
+    span { color: #007BFF; }
+    </style>
+</head>
+<body><center><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h1><span>Tetu</span>Search</h1>
+  <h3>出発駅・到着駅を入力</h3>
+  <form action="/search" method="post">
+    出発駅: <input type="text" name="from" required><br>
+    到着駅: <input type="text" name="to" required><br>
+    <input type="submit" value="検索">
+  </form>
+  <br>
+    <a href="/popular">人気路線ランキングを見る</a>
+
+</body>
+</html>
